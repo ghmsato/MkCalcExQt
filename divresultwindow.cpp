@@ -117,7 +117,7 @@ void DivResultWindow::mkitem(int a, int b, int f, quint32* re)
 
     x = qrand32() % (ipow10(a) - ipow10(a - 1)) + ipow10(a - 1);
     if ((b == 1) && (f == 1)) {
-        y = qrand32() % 8 + 2;
+        y = qrand() % 8 + 2;
     } else {
         y = qrand32() % (ipow10(b) - ipow10(b - 1)) + ipow10(b - 1);
     }
@@ -138,6 +138,9 @@ void DivResultWindow::mkitem(int a, int b, int f, quint32* re)
                 s = 1;
             } else {
                 s = qrand32() % (high - 2) + 1;
+            }
+            if ((y * r + s) > ipow10(a) - 1) {
+                r = r - 1;
             }
             x = y * r + s;
         }

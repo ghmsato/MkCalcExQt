@@ -103,11 +103,11 @@ void MulResultWindow::mkitem(int a, int b, quint32* re)
 
     x = qrand32() % (ipow10(a) - ipow10(a - 1)) + ipow10(a - 1);
     if ((x % 10) == 0) {
-        x = x + qrand32() % 8 + 1;
+        x = x + qrand() % 8 + 1;
     }
     y = qrand32() % (ipow10(b) - ipow10(b - 1)) + ipow10(b - 1);
     if ((y % 10) == 0) {
-        y = y + qrand32() % 8 + 1;
+        y = y + qrand() % 8 + 1;
     }
     re[0] = x;
     re[1] = y;
