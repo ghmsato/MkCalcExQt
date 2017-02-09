@@ -1,4 +1,5 @@
 ﻿#include "mulresultwindow.h"
+#include "mkcalcexqt_common.h"
 #include <QTextEdit>
 #include <QFont>
 #include <QString>
@@ -6,14 +7,16 @@
 #include <QTime>
 #include <cmath>
 
-MulResultWindow::MulResultWindow(QWidget *parnet)
-{
-}
 
-MulResultWindow::~MulResultWindow()
-{
-}
-
+//
+// Constructor
+//
+// a: number of digits for 1st number
+// b: number of digits for 2nd number
+// c: number of decimal places in 1st number
+// d: number of decimal places in 2nd number
+// l: number of items
+//
 MulResultWindow::MulResultWindow(int a, int b, int c, int d, int l)
 {
     // Set Window Size
@@ -85,24 +88,15 @@ MulResultWindow::MulResultWindow(int a, int b, int c, int d, int l)
 //
 // private functions
 //
-quint32 MulResultWindow::qrand32()
-{
-    return (quint32)qrand() | ((quint32)qrand() << 15);
-}
 
-quint32 MulResultWindow::ipow10(int a)
-{
-    if (a == 0) {
-        return 1;
-    } else {
-        quint32 r = 10;
-        for (int i = 1; i < a; i++) {
-            r = r * 10;
-        }
-        return r;
-    }
-}
-
+//
+// Make one item based on paramters
+//
+// a: number of digits for 1st number
+// b: number of digits for 2nd number
+// re: pointer to result array
+//     (re[0] - 1st number, re[1] - 2nd number, re[3] - product
+//
 void MulResultWindow::mkitem(int a, int b, quint32* re)
 {
     quint32 x, y;

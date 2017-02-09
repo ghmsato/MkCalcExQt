@@ -1,4 +1,5 @@
 ﻿#include "divresultwindow.h"
+#include "mkcalcexqt_common.h"
 #include <QTextEdit>
 #include <QFont>
 #include <QString>
@@ -6,14 +7,16 @@
 #include <QTime>
 #include <cmath>
 
-DivResultWindow::DivResultWindow(QWidget *parnet)
-{
-}
 
-DivResultWindow::~DivResultWindow()
-{
-}
-
+//
+// Constructor
+//
+// a: number of digits for dividend
+// b: number of digits for divisor
+// l: number of items
+// v: number of items which has remainder
+// f: 0 - no remainder, 1 - with remainder, 2 - v items has remainder
+//
 DivResultWindow::DivResultWindow(int a, int b, int l, int v, int f)
 {
     // Set Window Size
@@ -79,6 +82,14 @@ DivResultWindow::DivResultWindow(int a, int b, int l, int v, int f)
 //
 // private functions
 //
+
+//
+// Make random array for f
+//
+// l: length of array
+// v: number of '1' (other items are all '0')
+// fa: pointer to result array
+//
 void DivResultWindow::randsort_f(int l, int v, int* fa)
 {
     fa[0] = 1;
@@ -91,24 +102,15 @@ void DivResultWindow::randsort_f(int l, int v, int* fa)
     }
 }
 
-quint32 DivResultWindow::qrand32(void)
-{
-    return (quint32)qrand() | ((quint32)qrand() << 15);
-}
-
-quint32 DivResultWindow::ipow10(int a)
-{
-    if (a == 0) {
-        return 1;
-    } else {
-        quint32 r = 10;
-        for (int i = 1; i < a; i++) {
-            r = r * 10;
-        }
-        return r;
-    }
-}
-
+//
+// Make one item based on parameters
+//
+// a: number of digits for dividend
+// b: number of digits for divisor
+// f: 0 - no remainder, 1 - with remainder
+// re: pointer to result array
+//     (re[0] - dividend, re[1] - divisor, re[2] - quotient, re[3] - remainder)
+//
 void DivResultWindow::mkitem(int a, int b, int f, quint32* re)
 {
     quint32 x, y, r, s;

@@ -26,10 +26,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     divresultwindow.cpp \
-    mulresultwindow.cpp
+    mulresultwindow.cpp \
+    mkcalcexqt_common.cpp
 
 HEADERS  += mainwindow.h \
     divresultwindow.h \
-    mulresultwindow.h
+    mulresultwindow.h \
+    mkcalcexqt_common.h
 
 FORMS    += mainwindow.ui
